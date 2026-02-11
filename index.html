@@ -58,6 +58,14 @@
       animation: bounce-in 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
     }
     
+    #success-screen .bounce-in {
+      animation: bounce-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    }
+    #success-screen.hidden .bounce-in {
+      opacity: 0;
+      transform: scale(0);
+    }
+    
     .wiggle {
       animation: wiggle 0.5s ease-in-out infinite;
     }
@@ -101,7 +109,7 @@
       💕
      </div><!-- Couple Photo -->
      <div class="mb-8 float-animation">
-      <div class="inline-block bg-white p-3 rounded-2xl shadow-2xl transform rotate-2 hover:rotate-0 transition-transform duration-300"><img src="mj.jpg" alt="Our photo together" loading="lazy" class="w-48 h-48 md:w-56 md:h-56 object-cover rounded-xl" onerror="console.error('Image failed to load:', this.src); this.style.background='linear-gradient(135deg, #fda4af 0%, #fb7185 100%)'; this.alt='Replace with your photo';">
+      <div class="inline-block bg-white p-3 rounded-2xl shadow-2xl transform rotate-2 hover:rotate-0 transition-transform duration-300"><img src="mj.png" alt="Our photo together" loading="lazy" class="w-48 h-48 md:w-56 md:h-56 object-cover rounded-xl" onerror="console.error('Image failed to load:', this.src); this.style.background='linear-gradient(135deg, #fda4af 0%, #fb7185 100%)'; this.alt='Replace with your photo';">
        <div class="absolute -top-3 -right-3 text-4xl animate-pulse">
         💖
        </div>
@@ -117,13 +125,34 @@
      <div class="flex flex-col sm:flex-row gap-4 items-center justify-center relative min-h-[120px]"><button id="yes-btn" class="px-10 py-4 bg-gradient-to-r from-pink-500 to-rose-500 text-white text-xl font-bold rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 wiggle"> Yes! 💖 </button> <button id="no-btn" class="no-btn px-10 py-4 bg-gray-300 text-gray-600 text-xl font-bold rounded-full shadow-md absolute sm:relative"> No 😢 </button>
      </div>
      <p class="text-pink-600 mt-6 text-sm italic opacity-70">Hint: Try clicking No... if you can! 😏</p>
+    </div><!-- Question Page 1 (Hidden Initially) -->
+    <div id="question-page-1" class="text-center max-w-lg mx-auto hidden">
+     <div class="text-7xl mb-6 bounce-in">💝</div>
+     <h1 class="font-pacifico text-3xl md:text-4xl text-pink-800 mb-8 leading-relaxed">Do you promise to laugh at my jokes (even the bad ones)? 😄</h1>
+     <div class="text-6xl mb-8 float-animation">🤣❤️</div>
+     <div class="flex flex-col sm:flex-row gap-4 items-center justify-center">
+      <button id="question-1-next" class="px-10 py-4 bg-gradient-to-r from-pink-500 to-rose-500 text-white text-xl font-bold rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300">Of course! 💖</button>
+      <button id="question-1-alt" class="px-10 py-4 bg-white/90 text-pink-700 text-xl font-bold rounded-full shadow-lg border-2 border-pink-300 hover:scale-105 transition-all duration-300">I'll try my best 😅</button>
+     </div>
+    </div><!-- Question Page 2 (Hidden Initially) -->
+    <div id="question-page-2" class="text-center max-w-lg mx-auto hidden">
+     <div class="text-7xl mb-6 bounce-in">🌹</div>
+     <h1 class="font-pacifico text-3xl md:text-4xl text-pink-800 mb-8 leading-relaxed">Will you be my partner in crime for life? 🤝</h1>
+     <div class="text-6xl mb-8 float-animation">💕✨</div>
+     <button id="question-2-next" class="px-10 py-4 bg-gradient-to-r from-pink-500 to-rose-500 text-white text-xl font-bold rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300">Forever and always! 💕</button>
+    </div><!-- Question Page 3 (Hidden Initially) -->
+    <div id="question-page-3" class="text-center max-w-lg mx-auto hidden">
+     <div class="text-7xl mb-6 bounce-in">📸</div>
+     <h1 class="font-pacifico text-3xl md:text-4xl text-pink-800 mb-8 leading-relaxed">Will you be my personal photographer? 📷💕</h1>
+     <div class="text-6xl mb-8 float-animation">✨💕</div>
+     <button id="question-3-next" class="px-10 py-4 bg-gradient-to-r from-pink-500 to-rose-500 text-white text-xl font-bold rounded-full shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300">Always! 💖</button>
     </div><!-- Success Screen (Hidden Initially) -->
     <div id="success-screen" class="text-center max-w-2xl mx-auto hidden"><!-- Celebration Emoji -->
      <div class="text-7xl mb-4 bounce-in">
       🎉💕🎉
      </div><!-- Success Message -->
      <h1 id="success-title" class="font-pacifico text-4xl md:text-5xl text-pink-800 mb-4 bounce-in" style="animation-delay: 0.2s;">Yay! 🥳</h1>
-     <p id="success-subtitle" class="text-xl md:text-2xl text-pink-700 mb-8 bounce-in" style="animation-delay: 0.4s;">I knew you would choose Yes! 💖</p><!-- Celebration Options -->
+     <p id="success-subtitle" class="text-xl md:text-2xl text-pink-700 mb-8 bounce-in" style="animation-delay: 0.4s;">I knew you would say Always. 💖</p><!-- Celebration Options -->
      <div class="bounce-in" style="animation-delay: 0.6s;">
       <h2 class="font-pacifico text-2xl md:text-3xl text-pink-800 mb-6">How do you want to celebrate Valentine's? 🌹</h2>
       <div class="grid grid-cols-2 gap-4 max-w-md mx-auto">
@@ -175,7 +204,7 @@
   <script>
     const defaultConfig = {
       proposal_name: 'Hemanth',
-      success_message: 'I knew you would choose Yes! 💖',
+      success_message: 'I knew you would say Always. 💖',
       primary_color: '#ec4899',
       secondary_color: '#ffffff',
       text_color: '#831843',
@@ -265,13 +294,53 @@
       
       yesBtn.addEventListener('click', () => {
         createConfetti();
-        
         setTimeout(() => {
           document.getElementById('proposal-screen').classList.add('hidden');
-          document.getElementById('success-screen').classList.remove('hidden');
+          document.getElementById('question-page-1').classList.remove('hidden');
         }, 500);
       });
     }
+
+    // Question page 1 → next
+    function goToQuestion2() {
+      createConfetti();
+      setTimeout(() => {
+        document.getElementById('question-page-1').classList.add('hidden');
+        document.getElementById('question-page-2').classList.remove('hidden');
+      }, 300);
+    }
+    document.getElementById('question-1-next').addEventListener('click', goToQuestion2);
+    document.getElementById('question-1-alt').addEventListener('click', goToQuestion2);
+
+    // Question page 2 → success screen
+    document.getElementById('question-2-next').addEventListener('click', () => {
+      createConfetti();
+      setTimeout(() => {
+        document.getElementById('question-page-2').classList.add('hidden');
+        document.getElementById('question-page-3').classList.remove('hidden');
+      }, 500);
+    });
+
+    function reTriggerSuccessAnimations() {
+      const screen = document.getElementById('success-screen');
+      const animated = screen.querySelectorAll('.bounce-in');
+      animated.forEach(el => {
+        el.classList.remove('bounce-in');
+      });
+      screen.offsetHeight;
+      animated.forEach(el => {
+        el.classList.add('bounce-in');
+      });
+    }
+
+    document.getElementById('question-3-next').addEventListener('click', () => {
+      createConfetti();
+      setTimeout(() => {
+        document.getElementById('question-page-3').classList.add('hidden');
+        document.getElementById('success-screen').classList.remove('hidden');
+        reTriggerSuccessAnimations();
+      }, 500);
+    });
 
     // Celebration choice handlers
     function setupCelebrationChoices() {
